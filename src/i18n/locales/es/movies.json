@@ -1,0 +1,15 @@
+{
+  "rows": {
+    "trending": "Tendencias",
+    "popular": "Populares",
+    "topRated": "Mejor valoradas",
+    "upcoming": "Próximamente",
+    "similar": "Películas similares"
+  },
+  "playTrailer": "Ver tráiler",
+  "addToWatchlist": "Añadir a la lista",
+  "genreFilterAll": "Todos",
+  "noTitlesFound": "No se encontraron títulos.",
+  "movieNotFound": "No pudimos encontrar esa película.",
+  "minutes": "{{count}} min"
+}

@@ -5,12 +5,12 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0f0f0f;
+  background: radial-gradient(ellipse at 50% 40%, var(--bg-secondary) 0%, var(--bg-primary) 70%);
 `
 
 export const Card = styled.div`
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 2.5rem;
   width: 100%;
@@ -27,13 +27,13 @@ export const Logo = styled.div`
 export const Title = styled.h1`
   font-size: 1.5rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0 0 0.25rem;
 `
 
 export const Subtitle = styled.p`
   font-size: 0.875rem;
-  color: #b3b3b3;
+  color: var(--text-secondary);
   margin: 0 0 1.5rem;
 `
 
@@ -44,7 +44,7 @@ export const Field = styled.div`
 export const Label = styled.label`
   display: block;
   font-size: 0.875rem;
-  color: #b3b3b3;
+  color: var(--text-secondary);
   margin-bottom: 0.375rem;
 `
 
@@ -57,10 +57,10 @@ export const InputRow = styled.div`
 export const Input = styled.input`
   width: 100%;
   padding: 0.625rem 0.75rem;
-  background: #0f0f0f;
-  border: 1px solid #2a2a2a;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 6px;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 0.875rem;
   outline: none;
   transition: border-color 0.15s;

@@ -8,7 +8,7 @@ export const Wrapper = styled.section`
 export const Title = styled.h2`
   font-size: 1rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0 0 0.75rem;
 `
 
@@ -27,7 +27,7 @@ export const Item = styled.div`
   cursor: pointer;
 
   &:hover {
-    background: #1a1a1a;
+    background: var(--bg-secondary);
   }
 `
 
@@ -42,7 +42,7 @@ export const ThumbFallback = styled.div`
   width: 40px;
   height: 60px;
   border-radius: 4px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,10 +50,10 @@ export const ThumbFallback = styled.div`
 
 export const Name = styled.div`
   font-size: 0.875rem;
-  color: #ffffff;
+  color: var(--text-primary);
 `
 
 export const Sub = styled.div`
   font-size: 0.75rem;
-  color: #666;
+  color: var(--text-secondary);
 `

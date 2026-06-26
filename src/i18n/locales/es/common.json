@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "search": "Buscar",
+    "watchlist": "Lista de seguimiento",
+    "myLists": "Mis listas",
+    "searchPlaceholder": "Buscar películas y series…",
+    "logout": "Cerrar sesión"
+  },
+  "errors": {
+    "sectionFailed": "No se pudo cargar {{section}}.",
+    "somethingWrong": "Algo salió mal.",
+    "notFound": "No pudimos encontrar lo que buscas.",
+    "backHome": "Volver al inicio"
+  },
+  "states": {
+    "loading": "Cargando…"
+  }
+}

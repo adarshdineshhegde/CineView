@@ -1,0 +1,15 @@
+{
+  "rows": {
+    "trending": "Trending",
+    "popular": "Popular",
+    "topRated": "Top Rated",
+    "upcoming": "Upcoming",
+    "similar": "Similar Movies"
+  },
+  "playTrailer": "Play Trailer",
+  "addToWatchlist": "Add to Watchlist",
+  "genreFilterAll": "All",
+  "noTitlesFound": "No titles found.",
+  "movieNotFound": "We couldn't find that movie.",
+  "minutes": "{{count}} min"
+}

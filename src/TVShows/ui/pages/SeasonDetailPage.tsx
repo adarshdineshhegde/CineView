@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { TmdbService } from '@/Api'
 import { useAsync, NotFoundState } from '@/Common'
 import { EpisodeListItem } from '../components/EpisodeListItem'
@@ -8,6 +9,7 @@ export const SeasonDetailPage = () => {
   const { id, seasonNumber } = useParams<{ id: string; seasonNumber: string }>()
   const showId = Number(id)
   const season = Number(seasonNumber)
+  const { t } = useTranslation('tvshows')
 
   const detail = useAsync(
     () => TmdbService.getSeasonDetail(showId, season),
@@ -30,7 +32,11 @@ export const SeasonDetailPage = () => {
   return (
     <Wrapper data-testid="season-detail-page">
       <ProgressBar>
-        0 / {detail.data.episodes.length} watched (tracking comes in M6)
+        {t('watchedProgress', {
+          watched: 0,
+          total: detail.data.episodes.length,
+        })}{' '}
+        — {t('trackingComingSoon')}
       </ProgressBar>
       {detail.data.episodes.map((episode) => (
         <EpisodeListItem key={episode.id} episode={episode} />

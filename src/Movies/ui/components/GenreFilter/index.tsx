@@ -1,4 +1,5 @@
 import type { Genre } from '@/Api'
+import { useTranslation } from 'react-i18next'
 import { Wrapper, Chip } from './StyledComponents'
 
 interface Props {
@@ -7,11 +8,14 @@ interface Props {
   onSelect: (id: number | null) => void
 }
 
-export const GenreFilter = ({ genres, activeGenreId, onSelect }: Props) => (
-  <Wrapper>
-    <Chip $active={activeGenreId === null} onClick={() => onSelect(null)}>
-      All
-    </Chip>
+export const GenreFilter = ({ genres, activeGenreId, onSelect }: Props) => {
+  const { t } = useTranslation('movies')
+
+  return (
+    <Wrapper>
+      <Chip $active={activeGenreId === null} onClick={() => onSelect(null)}>
+        {t('genreFilterAll')}
+      </Chip>
     {genres.map((genre) => (
       <Chip
         key={genre.id}
@@ -22,4 +26,5 @@ export const GenreFilter = ({ genres, activeGenreId, onSelect }: Props) => (
       </Chip>
     ))}
   </Wrapper>
-)
+  )
+}

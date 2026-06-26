@@ -12,9 +12,17 @@ import {
   genreSchema,
 } from '../../core/types/Tmdb.types'
 
+let currentLanguage = 'en-US'
+let currentRegion = 'US'
+
+const localeToTmdbLanguage = (locale: string) =>
+  ({ en: 'en-US', es: 'es-ES' }[locale] ?? 'en-US')
+
 const request = async (path: string, params: Record<string, string> = {}) => {
   const url = new URL(`${TMDB_BASE_URL}${path}`)
   url.searchParams.set('api_key', TMDB_API_KEY)
+  url.searchParams.set('language', currentLanguage)
+  url.searchParams.set('region', currentRegion)
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v))
 
   let response: Response
@@ -103,5 +111,13 @@ export const TmdbService = {
   async searchMulti(query: string) {
     const json = await request('/search/multi', { query })
     return validate(multiSearchResponseSchema, json).results
+  },
+
+  setLanguage(locale: string) {
+    currentLanguage = localeToTmdbLanguage(locale)
+  },
+
+  setRegion(region: string) {
+    currentRegion = region
   },
 }

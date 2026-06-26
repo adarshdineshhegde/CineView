@@ -1,0 +1,11 @@
+{
+  "placeholder": "Search movies, TV shows, people…",
+  "groupMovies": "Movies",
+  "groupTvShows": "TV Shows",
+  "groupPeople": "People",
+  "recentSearches": "Recent Searches",
+  "clearAll": "Clear all",
+  "searching": "Searching…",
+  "noResults": "No results for \"{{query}}\".",
+  "error": "Something went wrong. Try again."
+}

@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 import type { AuthService } from '../../services/AuthService'
 import type { Session, AuthStatus } from '../../../core/types/Auth.types'
 import type { Credentials } from '../../../core/types/Auth.types'
@@ -24,19 +24,25 @@ export class SessionStore {
     this.errorMessage = null
     try {
       const session = await this.service.login(credentials)
-      this.session = session
-      sessionStorage.setItem(LOCAL_STORAGE_KEYS.SESSION, JSON.stringify(session))
-      this.loginStatus = 'success'
+      runInAction(() => {
+        this.session = session
+        sessionStorage.setItem(LOCAL_STORAGE_KEYS.SESSION, JSON.stringify(session))
+        this.loginStatus = 'success'
+      })
     } catch (err) {
-      this.errorMessage = err instanceof Error ? err.message : 'Login failed'
-      this.loginStatus = 'error'
+      runInAction(() => {
+        this.errorMessage = err instanceof Error ? err.message : 'Login failed'
+        this.loginStatus = 'error'
+      })
     }
   }
 
   async logout(): Promise<void> {
     await this.service.logout()
-    this.session = null
-    this.loginStatus = 'idle'
+    runInAction(() => {
+      this.session = null
+      this.loginStatus = 'idle'
+    })
     sessionStorage.removeItem(LOCAL_STORAGE_KEYS.SESSION)
   }
 

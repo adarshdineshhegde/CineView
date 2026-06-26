@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 export const Title = styled.h2`
   font-size: 1.125rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0 0 1rem;
 `
 
@@ -38,7 +38,7 @@ export const PosterFallback = styled.div`
   width: 100%;
   aspect-ratio: 2 / 3;
   border-radius: 8px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +47,7 @@ export const PosterFallback = styled.div`
 
 export const SeasonName = styled.div`
   font-size: 0.8125rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-top: 0.5rem;
 `
 

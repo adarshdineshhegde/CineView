@@ -7,8 +7,9 @@ export const RowWrapper = styled.section`
 export const RowTitle = styled.h2`
   font-size: 1.125rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0 0 0.75rem 2rem;
+  text-transform: capitalize;
 `
 
 export const ScrollArea = styled.div`
@@ -24,7 +25,7 @@ export const SkeletonCard = styled.div`
   aspect-ratio: 2 / 3;
   flex-shrink: 0;
   border-radius: 8px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   animation: pulse 1.4s ease-in-out infinite;
 
   @keyframes pulse {
@@ -34,7 +35,7 @@ export const SkeletonCard = styled.div`
 `
 
 export const EmptyMessage = styled.p`
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.875rem;
   margin-left: 2rem;
 `

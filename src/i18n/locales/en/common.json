@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "home": "Home",
+    "search": "Search",
+    "watchlist": "Watchlist",
+    "myLists": "My Lists",
+    "searchPlaceholder": "Search movies & shows…",
+    "logout": "Logout"
+  },
+  "errors": {
+    "sectionFailed": "Couldn't load {{section}}.",
+    "somethingWrong": "Something went wrong.",
+    "notFound": "We couldn't find what you're looking for.",
+    "backHome": "Back to Home"
+  },
+  "states": {
+    "loading": "Loading…"
+  }
+}

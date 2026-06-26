@@ -1,0 +1,9 @@
+{
+  "seasons": "Seasons",
+  "episodes_one": "{{count}} episode",
+  "episodes_other": "{{count}} episodes",
+  "watchedProgress": "{{watched}} / {{total}} watched",
+  "showNotFound": "We couldn't find that TV show.",
+  "seasonNotFound": "We couldn't find that season.",
+  "trackingComingSoon": "(episode tracking coming in a future milestone)"
+}

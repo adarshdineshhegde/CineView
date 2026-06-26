@@ -8,10 +8,10 @@ export const Input = styled.input`
   width: 100%;
   max-width: 480px;
   padding: 0.75rem 1rem;
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 0.9375rem;
   outline: none;
 

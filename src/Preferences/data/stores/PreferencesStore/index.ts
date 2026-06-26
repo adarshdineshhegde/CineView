@@ -1,70 +1,93 @@
 import { makeAutoObservable } from 'mobx'
-import type { Preferences, Theme, Locale, Region } from '../../../core/types/Preferences.types'
-import { DEFAULT_PREFERENCES } from '../../../core/constants/Preferences.constants'
-import { LOCAL_STORAGE_KEYS } from '@/Common'
+import i18n from 'src/i18n'
+import { TmdbService } from '@/Api'
+
+import {
+  persistedPreferencesSchema,
+  type Locale,
+  type Region,
+  type Theme,
+} from '../../../core/types/Preferences.types'
+import { PREFERENCES_STORAGE_KEY } from '../../../core/constants/Preferences.constants'
+const getOsPreferredTheme = (): Theme =>
+  window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+const readPersisted = () => {
+  try {
+    const raw = localStorage.getItem(PREFERENCES_STORAGE_KEY)
+    if (!raw) return null
+    const parsed = persistedPreferencesSchema.safeParse(JSON.parse(raw))
+    return parsed.success ? parsed.data : null
+  } catch {
+    return null
+  }
+}
 
 export class PreferencesStore {
-  preferences: Preferences = { ...DEFAULT_PREFERENCES }
+  locale: Locale = 'en'
+  region: Region = 'US'
+  theme: Theme = 'light'
 
   constructor() {
     makeAutoObservable(this)
-    this.restore()
-    this.applyTheme()
+    this.initialize()
   }
 
-  get theme(): Theme {
-    return this.preferences.theme
-  }
-
-  get locale(): Locale {
-    return this.preferences.locale
-  }
-
-  get region(): Region {
-    return this.preferences.region
-  }
-
-  setTheme(theme: Theme): void {
-    this.preferences.theme = theme
-    this.persist()
-    this.applyTheme()
-  }
-
-  setLocale(locale: Locale): void {
-    this.preferences.locale = locale
-    this.persist()
-  }
-
-  setRegion(region: Region): void {
-    this.preferences.region = region
-    this.persist()
-  }
-
-  private applyTheme(): void {
-    const root = document.documentElement
-    if (this.preferences.theme === 'dark') {
-      root.classList.add('dark')
+  private initialize() {
+    const persisted = readPersisted()
+    if (persisted) {
+      this.locale = persisted.locale
+      this.region = persisted.region
+      this.theme = persisted.theme
     } else {
-      root.classList.remove('dark')
+      this.theme = getOsPreferredTheme()
     }
+
+    this.applyTheme()
+    this.applyLocale()
+    this.applyTmdbParams()
   }
 
-  private persist(): void {
-    localStorage.setItem(LOCAL_STORAGE_KEYS.PREFERENCES, JSON.stringify(this.preferences))
+  private persist() {
+    localStorage.setItem(
+      PREFERENCES_STORAGE_KEY,
+      JSON.stringify({ locale: this.locale, region: this.region, theme: this.theme })
+    )
   }
 
-  private restore(): void {
-    try {
-      const raw = localStorage.getItem(LOCAL_STORAGE_KEYS.PREFERENCES)
-      if (!raw) {
-        // Default to OS preference on first load
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        this.preferences.theme = prefersDark ? 'dark' : 'light'
-        return
-      }
-      this.preferences = { ...DEFAULT_PREFERENCES, ...(JSON.parse(raw) as Partial<Preferences>) }
-    } catch {
-      // corrupted storage — use defaults
-    }
+  private applyTheme() {
+    document.documentElement.classList.toggle('dark', this.theme === 'dark')
+  }
+
+  private applyLocale() {
+    i18n.changeLanguage(this.locale)
+  }
+
+  private applyTmdbParams() {
+    TmdbService.setLanguage(this.locale)
+    TmdbService.setRegion(this.region)
+  }
+
+  setLocale = (locale: Locale) => {
+    this.locale = locale
+    this.applyLocale()
+    this.applyTmdbParams()
+    this.persist()
+  }
+
+  setRegion = (region: Region) => {
+    this.region = region
+    this.applyTmdbParams()
+    this.persist()
+  }
+
+  setTheme = (theme: Theme) => {
+    this.theme = theme
+    this.applyTheme()
+    this.persist()
+  }
+
+  toggleTheme = () => {
+    this.setTheme(this.theme === 'dark' ? 'light' : 'dark')
   }
 }

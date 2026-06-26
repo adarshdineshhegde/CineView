@@ -17,19 +17,19 @@ export const Poster = styled.img`
   aspect-ratio: 2 / 3;
   object-fit: cover;
   border-radius: 8px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
 `
 
 export const PosterFallback = styled.div`
   width: 100%;
   aspect-ratio: 2 / 3;
   border-radius: 8px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  color: #3a3a3a;
+  color: var(--border-color);
 `
 
 export const Rating = styled.div`
@@ -40,7 +40,7 @@ export const Rating = styled.div`
 
 export const Title = styled.div`
   font-size: 0.8125rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-top: 0.125rem;
   white-space: nowrap;
   overflow: hidden;

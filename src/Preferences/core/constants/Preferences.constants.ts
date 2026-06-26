@@ -1,11 +1,13 @@
-import type { Preferences } from '../types/Preferences.types'
+export const PREFERENCES_STORAGE_KEY = 'cineview:preferences'
 
-export const DEFAULT_PREFERENCES: Preferences = {
-  theme: 'dark',
-  locale: 'en-US',
-  region: 'US',
-} as const
+export const LOCALE_LABELS: Record<string, string> = {
+  en: 'English',
+  es: 'Español',
+}
 
-export const SUPPORTED_LOCALES = ['en-US', 'hi-IN'] as const
-
-export const SUPPORTED_REGIONS = ['US', 'IN', 'GB', 'AU'] as const
+export const REGION_LABELS: Record<string, string> = {
+  US: 'United States',
+  IN: 'India',
+  ES: 'Spain',
+  GB: 'United Kingdom',
+}

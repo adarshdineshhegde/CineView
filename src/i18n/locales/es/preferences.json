@@ -1,0 +1,9 @@
+{
+  "title": "Configuración",
+  "language": "Idioma",
+  "region": "Región",
+  "theme": "Tema",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "logout": "Cerrar sesión"
+}

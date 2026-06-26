@@ -6,6 +6,7 @@ import {
   Field, Label, InputRow, Input, ToggleButton,
   ErrorText, SubmitButton, GlobalError,
 } from './StyledComponents.ts'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   onSubmit: (credentials: Credentials) => void
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export const LoginForm = ({ onSubmit, status, errorMessage, fieldErrors }: Props) => {
+  const { t } = useTranslation('auth')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -29,14 +31,14 @@ export const LoginForm = ({ onSubmit, status, errorMessage, fieldErrors }: Props
     <Wrapper>
       <Card>
         <Logo>🎬 CineView</Logo>
-        <Title>Welcome back</Title>
-        <Subtitle>Sign in to your account</Subtitle>
+        <Title>{t('welcomeBack')}</Title>
+        <Subtitle>{t('signInSubtitle')}</Subtitle>
 
         {errorMessage && <GlobalError role="alert">{errorMessage}</GlobalError>}
 
         <form onSubmit={handleSubmit} noValidate>
           <Field>
-            <Label htmlFor="username">Email</Label>
+            <Label htmlFor="username">{t('email')}</Label>
             <Input
               id="username"
               type="email"
@@ -50,7 +52,7 @@ export const LoginForm = ({ onSubmit, status, errorMessage, fieldErrors }: Props
           </Field>
 
           <Field>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{t('password')}</Label>
             <InputRow>
               <Input
                 id="password"
@@ -64,7 +66,7 @@ export const LoginForm = ({ onSubmit, status, errorMessage, fieldErrors }: Props
               <ToggleButton
                 type="button"
                 onClick={() => setShowPassword(p => !p)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? t('hidePassword') : t('showPassword')}
               >
                 {showPassword ? '🙈' : '👁️'}
               </ToggleButton>
@@ -73,7 +75,7 @@ export const LoginForm = ({ onSubmit, status, errorMessage, fieldErrors }: Props
           </Field>
 
           <SubmitButton type="submit" disabled={isLoading}>
-            {isLoading ? 'Signing in…' : 'Sign in'}
+            {isLoading ? t('signingIn') : t('signIn')}
           </SubmitButton>
         </form>
       </Card>

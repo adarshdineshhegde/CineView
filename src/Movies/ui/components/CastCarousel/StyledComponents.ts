@@ -24,7 +24,7 @@ export const PhotoFallback = styled.div`
   width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +33,7 @@ export const PhotoFallback = styled.div`
 
 export const Name = styled.div`
   font-size: 0.8125rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-top: 0.5rem;
 `
 

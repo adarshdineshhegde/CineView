@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { TmdbService } from '@/Api'
 import type { SearchResult } from '@/Api'
 import { useDebounce } from '@/Common'
@@ -15,6 +16,7 @@ export const SearchPage = () => {
   const [results, setResults] = useState<SearchResult[]>([])
   const [status, setStatus] = useState<Status>('idle')
   const [recent, setRecent] = useState<string[]>(() => RecentSearches.get())
+  const { t } = useTranslation('search')
 
   const debouncedQuery = useDebounce(input, SEARCH_DEBOUNCE_MS)
 
@@ -71,15 +73,17 @@ export const SearchPage = () => {
         />
       )}
 
-      {status === 'loading' && <EmptyState>Searching…</EmptyState>}
-      {status === 'error' && <EmptyState>Something went wrong. Try again.</EmptyState>}
-      {status === 'empty' && <EmptyState>No results for "{debouncedQuery}".</EmptyState>}
+      {status === 'loading' && <EmptyState>{t('searching')}</EmptyState>}
+      {status === 'error' && <EmptyState>{t('error')}</EmptyState>}
+      {status === 'empty' && (
+        <EmptyState>{t('noResults', { query: debouncedQuery })}</EmptyState>
+      )}
 
       {status === 'success' && (
         <>
-          <SearchResultGroup title="Movies" items={grouped.movies} />
-          <SearchResultGroup title="TV Shows" items={grouped.tv} />
-          <SearchResultGroup title="People" items={grouped.people} />
+          <SearchResultGroup title={t('movies')} items={grouped.movies} />
+          <SearchResultGroup title={t('tvShows')} items={grouped.tv} />
+          <SearchResultGroup title={t('people')} items={grouped.people} />
         </>
       )}
     </div>

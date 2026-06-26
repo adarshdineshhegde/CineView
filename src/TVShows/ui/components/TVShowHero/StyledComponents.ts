@@ -17,7 +17,7 @@ export const Backdrop = styled.img`
 export const Gradient = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, #0f0f0f 0%, rgba(15, 15, 15, 0.3) 60%, rgba(15, 15, 15, 0.7) 100%);
+  background: linear-gradient(to top, var(--bg-primary) 0%, rgba(15, 15, 15, 0.3) 60%, rgba(15, 15, 15, 0.7) 100%);
 `
 
 export const Content = styled.div`

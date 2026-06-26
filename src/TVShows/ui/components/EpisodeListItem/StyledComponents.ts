@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid #2a2a2a;
+  border-bottom: 1px solid var(--border-color);
 `
 
 export const Still = styled.img`
@@ -19,7 +19,7 @@ export const StillFallback = styled.div`
   width: 160px;
   aspect-ratio: 16 / 9;
   border-radius: 6px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +38,7 @@ export const TopRow = styled.div`
 
 export const Name = styled.div`
   font-size: 0.9375rem;
-  color: #ffffff;
+  color: var(--text-primary);
   font-weight: 500;
 `
 
@@ -51,7 +51,7 @@ export const Checkbox = styled.input`
 
 export const AirDate = styled.div`
   font-size: 0.75rem;
-  color: #666;
+  color: var(--text-secondary);
   margin: 0.25rem 0;
 `
 

@@ -1,0 +1,9 @@
+{
+  "seasons": "Temporadas",
+  "episodes_one": "{{count}} episodio",
+  "episodes_other": "{{count}} episodios",
+  "watchedProgress": "{{watched}} / {{total}} vistos",
+  "showNotFound": "No pudimos encontrar esa serie.",
+  "seasonNotFound": "No pudimos encontrar esa temporada.",
+  "trackingComingSoon": "(el seguimiento de episodios llega más adelante)"
+}

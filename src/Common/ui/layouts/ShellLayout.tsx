@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 const Main = styled.main`
   min-height: calc(100vh - 64px);
-  background: #0f0f0f;
-  color: #ffffff;
+  background: var(--bg-primary);   
+  color: var(--text-primary);      
 `
 
 export const ShellLayout = () => (

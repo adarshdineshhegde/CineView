@@ -7,11 +7,13 @@ import { HeroBanner } from '../components/HeroBanner'
 import { ContentRow } from '../components/ContentRow'
 import { GenreFilter } from '../components/GenreFilter'
 import { TmdbService as Service } from '@/Api'
+import { useTranslation } from 'react-i18next'
 
 const filterByGenre = (items: Movie[], genreId: number | null) =>
   genreId === null ? items : items.filter((m) => m.genre_ids.includes(genreId))
 
 export const HomePage = () => {
+  const { t } = useTranslation('movies')
   const [activeGenreId, setActiveGenreId] = useState<number | null>(null)
   const [trailerKey, setTrailerKey] = useState<string | null>(null)
 
@@ -42,33 +44,33 @@ export const HomePage = () => {
         />
       )}
 
-      <SectionErrorBoundary fallbackLabel="Trending">
+      <SectionErrorBoundary fallbackLabel={t('trending')}>
         <ContentRow
-          title="Trending"
+          title={t('trending')}
           items={filterByGenre(trending.data ?? [], activeGenreId)}
           status={trending.status}
         />
       </SectionErrorBoundary>
 
-      <SectionErrorBoundary fallbackLabel="Popular">
+      <SectionErrorBoundary fallbackLabel={t('popular')}>
         <ContentRow
-          title="Popular"
+          title={t('popular')}
           items={filterByGenre(popular.data ?? [], activeGenreId)}
           status={popular.status}
         />
       </SectionErrorBoundary>
 
-      <SectionErrorBoundary fallbackLabel="Top Rated">
+      <SectionErrorBoundary fallbackLabel={t('topRated')}>
         <ContentRow
-          title="Top Rated"
+          title={t('topRated')}
           items={filterByGenre(topRated.data ?? [], activeGenreId)}
           status={topRated.status}
         />
       </SectionErrorBoundary>
 
-      <SectionErrorBoundary fallbackLabel="Upcoming">
+      <SectionErrorBoundary fallbackLabel={t('upcoming')}>
         <ContentRow
-          title="Upcoming"
+          title={t('upcoming')}
           items={filterByGenre(upcoming.data ?? [], activeGenreId)}
           status={upcoming.status}
         />

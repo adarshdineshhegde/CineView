@@ -17,7 +17,7 @@ export const Backdrop = styled.img`
 export const Gradient = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, #0f0f0f 0%, rgba(15, 15, 15, 0.3) 60%, rgba(15, 15, 15, 0.7) 100%);
+  background: linear-gradient(to top, var(--bg-primary) 0%, rgba(15, 15, 15, 0.3) 60%, rgba(15, 15, 15, 0.7) 100%);
 `
 
 export const Content = styled.div`
@@ -33,12 +33,12 @@ export const Content = styled.div`
 export const Title = styled.h1`
   font-size: 2rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
 `
 
 export const Tagline = styled.p`
-  color: #b3b3b3;
+  color: var(--text-secondary);
   font-style: italic;
   margin: 0;
 `
@@ -50,7 +50,7 @@ export const MetaRow = styled.div`
   font-size: 0.875rem;
 
   span:nth-child(2), span:nth-child(3), span:nth-child(4) {
-    color: #b3b3b3;
+    color: var(--text-secondary);
   }
 `
 

@@ -14,9 +14,9 @@ export const Chip = styled.button<{ $active: boolean }>`
   border-radius: 20px;
   font-size: 0.8125rem;
   cursor: pointer;
-  border: 1px solid ${(p) => (p.$active ? '#e50914' : '#3a3a3a')};
+  border: 1px solid ${(p) => (p.$active ? '#e50914' : 'var(--border-color)')};
   background: ${(p) => (p.$active ? '#e50914' : 'transparent')};
-  color: #ffffff;
+  color: ${(p) => (p.$active ? '#ffffff' : 'var(--text-primary)')};
   transition: border-color 0.15s, background 0.15s;
   white-space: nowrap;
 `

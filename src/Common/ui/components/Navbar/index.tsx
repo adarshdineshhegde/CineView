@@ -1,34 +1,36 @@
+import { useNavigate } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
-import { useNavbarController } from '@Auth/ui/controllers/useNavbarController'
+import { useTranslation } from 'react-i18next'
+import { useNavbarController } from '@/Auth/ui/controllers/useNavbarController'
 import {
   Nav, Logo, NavLinks, StyledNavLink,
-  RightSection, SearchInput, Avatar, LogoutButton,
-} from './StyledComponents.ts'
+  RightSection, Avatar, LogoutButton,
+} from './StyledComponents'
 
 export const Navbar = observer(() => {
+  const { t } = useTranslation('common')
   const { username, logout } = useNavbarController()
+  const navigate = useNavigate()
 
   return (
     <Nav>
       <Logo to="/">🎬 CineView</Logo>
 
       <NavLinks>
-        <StyledNavLink to="/" end>Home</StyledNavLink>
-        <StyledNavLink to="/search">Search</StyledNavLink>
-        <StyledNavLink to="/watchlist">Watchlist</StyledNavLink>
-        <StyledNavLink to="/lists">My Lists</StyledNavLink>
+        <StyledNavLink to="/" end>{t('nav.home')}</StyledNavLink>
+        <StyledNavLink to="/search">{t('nav.search')}</StyledNavLink>
+        <StyledNavLink to="/watchlist">{t('nav.watchlist')}</StyledNavLink>
+        <StyledNavLink to="/lists">{t('nav.myLists')}</StyledNavLink>
       </NavLinks>
 
       <RightSection>
-        <SearchInput
-          type="search"
-          placeholder="Search movies & shows…"
-          aria-label="Global search"
-        />
-        <Avatar aria-label={`Logged in as ${username}`}>
+        <Avatar
+          aria-label={`Logged in as ${username}`}
+          onClick={() => navigate('/settings')}
+        >
           {username.charAt(0).toUpperCase()}
         </Avatar>
-        <LogoutButton onClick={logout}>Logout</LogoutButton>
+        <LogoutButton onClick={logout}>{t('nav.logout')}</LogoutButton>
       </RightSection>
     </Nav>
   )

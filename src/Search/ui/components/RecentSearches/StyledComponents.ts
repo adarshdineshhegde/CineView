@@ -10,7 +10,7 @@ export const Title = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 0.875rem;
-  color: #b3b3b3;
+  color: var(--text-secondary);
   margin-bottom: 0.75rem;
 `
 
@@ -31,9 +31,9 @@ export const Pills = styled.div`
 export const Pill = styled.button`
   padding: 0.375rem 0.875rem;
   border-radius: 20px;
-  border: 1px solid #3a3a3a;
+  border: 1px solid var(--border-color);
   background: transparent;
-  color: #ffffff;
+  color: var(--text-primary);
   font-size: 0.8125rem;
   cursor: pointer;
 

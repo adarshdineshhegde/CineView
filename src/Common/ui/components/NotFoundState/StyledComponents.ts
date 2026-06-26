@@ -16,7 +16,7 @@ export const Emoji = styled.div`
 `
 
 export const Message = styled.p`
-  color: #b3b3b3;
+  color: var(--text-secondary);
   font-size: 1rem;
   margin-bottom: 1.5rem;
 `
