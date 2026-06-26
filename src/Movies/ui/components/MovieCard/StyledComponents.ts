@@ -46,8 +46,7 @@ export const Title = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `
-
-export const WatchlistButton = styled.button`
+export const WatchlistButton = styled.button<{ $active?: boolean }>`
   position: absolute;
   top: 0.375rem;
   right: 0.375rem;
@@ -55,7 +54,7 @@ export const WatchlistButton = styled.button`
   height: 24px;
   border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, 0.6);
+  background: ${(p) => (p.$active ? '#e50914' : 'rgba(0,0,0,0.6)')};
   color: #ffffff;
   font-size: 0.875rem;
   cursor: pointer;
@@ -63,8 +62,10 @@ export const WatchlistButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.15s;
 
   &:hover {
     background: #e50914;
   }
 `
+

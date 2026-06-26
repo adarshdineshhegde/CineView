@@ -1,5 +1,7 @@
+import { observer } from 'mobx-react-lite'
 import { getImageUrl } from '@/Api'
 import type { MovieDetail } from '@/Api'
+import { useRootStore } from '@/data/providers'
 import {
   Wrapper, Backdrop, Gradient, Content, Title, Tagline,
   MetaRow, TrailerButton, WatchlistButton,
@@ -10,8 +12,19 @@ interface Props {
   onPlayTrailer: () => void
 }
 
-export const MovieHero = ({ movie, onPlayTrailer }: Props) => {
+export const MovieHero = observer(({ movie, onPlayTrailer }: Props) => {
+  const { watchlistStore } = useRootStore()
   const backdropUrl = getImageUrl(movie.backdrop_path, 'backdrop')
+  const inWatchlist = watchlistStore.isInWatchlist(movie.id, 'movie')
+
+  const handleToggle = () => {
+    watchlistStore.toggle({
+      id: movie.id,
+      type: 'movie',
+      title: movie.title,
+      posterPath: movie.poster_path,
+    })
+  }
 
   return (
     <Wrapper>
@@ -29,9 +42,11 @@ export const MovieHero = ({ movie, onPlayTrailer }: Props) => {
         <p style={{ maxWidth: 600, color: '#ccc', fontSize: '0.9375rem' }}>{movie.overview}</p>
         <div style={{ display: 'flex', gap: '0.75rem' }}>
           <TrailerButton onClick={onPlayTrailer}>▶ Play Trailer</TrailerButton>
-          <WatchlistButton aria-label="Add to watchlist">＋ Watchlist</WatchlistButton>
+          <WatchlistButton onClick={handleToggle} $active={inWatchlist}>
+            {inWatchlist ? '✓ In Watchlist' : '＋ Watchlist'}
+          </WatchlistButton>
         </div>
       </Content>
     </Wrapper>
   )
-}
+})

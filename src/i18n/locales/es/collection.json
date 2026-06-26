@@ -1,0 +1,28 @@
+{
+  "pageTitle": "Mi lista de seguimiento",
+  "statusLabel": "Estado",
+  "status": {
+    "wantToWatch": "Quiero ver",
+    "watching": "Viendo",
+    "completed": "Completado"
+  },
+  "filter": {
+    "all": "Todos"
+  },
+  "sort": {
+    "dateAdded": "Fecha añadida",
+    "lastUpdated": "Última actualización",
+    "title": "Título"
+  },
+  "sortLabel": "Ordenar por",
+  "addNote": "Añadir nota…",
+  "editNote": "Editar nota",
+  "notePlaceholder": "Tu nota privada (máx. 300 caracteres)",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "remove": "Eliminar",
+  "empty": {
+    "message": "Tu lista está vacía. Empieza a explorar para añadir películas y series.",
+    "cta": "Ir al inicio"
+  }
+}

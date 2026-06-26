@@ -1,30 +1,25 @@
-export type WatchlistStatus = 'want_to_watch' | 'watching' | 'completed'
+import { z } from 'zod'
 
+export type WatchlistStatus = 'want_to_watch' | 'watching' | 'completed'
 export type MediaType = 'movie' | 'tv'
 
-export interface MediaSnapshot {
-  id: number
-  type: MediaType
-  title: string
-  posterPath: string | null
-}
+export const mediaSnapshotSchema = z.object({
+  id: z.number(),
+  type: z.enum(['movie', 'tv']),
+  title: z.string(),
+  posterPath: z.string().nullable(),
+})
 
-export interface WatchlistEntry {
-  uuid: string
-  media: MediaSnapshot
-  status: WatchlistStatus
-  note: string
-  addedAt: number
-  updatedAt: number
-}
+export const watchlistEntrySchema = z.object({
+  uuid: z.string(),
+  media: mediaSnapshotSchema,
+  status: z.enum(['want_to_watch', 'watching', 'completed']),
+  note: z.string().max(300),
+  addedAt: z.number(),
+  updatedAt: z.number(),
+})
 
-export interface CustomList {
-  uuid: string
-  name: string
-  description: string
-  items: MediaSnapshot[]
-  createdAt: number
-  updatedAt: number
-}
+export const watchlistStorageSchema = z.array(watchlistEntrySchema)
 
-export type CollectionStatus = 'idle' | 'loading' | 'success' | 'error'
+export type MediaSnapshot = z.infer<typeof mediaSnapshotSchema>
+export type WatchlistEntry = z.infer<typeof watchlistEntrySchema>

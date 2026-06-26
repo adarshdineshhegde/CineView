@@ -1,0 +1,28 @@
+{
+  "pageTitle": "My Watchlist",
+  "statusLabel": "Status",
+  "status": {
+    "wantToWatch": "Want to Watch",
+    "watching": "Watching",
+    "completed": "Completed"
+  },
+  "filter": {
+    "all": "All"
+  },
+  "sort": {
+    "dateAdded": "Date Added",
+    "lastUpdated": "Last Updated",
+    "title": "Title"
+  },
+  "sortLabel": "Sort by",
+  "addNote": "Add a note…",
+  "editNote": "Edit note",
+  "notePlaceholder": "Your private note (max 300 characters)",
+  "save": "Save",
+  "cancel": "Cancel",
+  "remove": "Remove",
+  "empty": {
+    "message": "Your watchlist is empty. Start browsing to add movies and shows.",
+    "cta": "Browse Home"
+  }
+}

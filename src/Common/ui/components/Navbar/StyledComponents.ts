@@ -86,3 +86,27 @@ export const LogoutButton = styled.button`
     border-color: var(--text-primary);
   }
 `
+
+export const NavItemWrapper = styled.div`
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+`
+
+export const Badge = styled.span`
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background: #e50914;
+  color: #ffffff;
+  font-size: 0.625rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  pointer-events: none;
+`

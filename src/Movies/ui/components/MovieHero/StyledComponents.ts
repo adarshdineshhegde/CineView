@@ -67,17 +67,17 @@ export const TrailerButton = styled.button`
     background: #e0e0e0;
   }
 `
-
-export const WatchlistButton = styled.button`
+export const WatchlistButton = styled.button<{ $active?: boolean }>`
   padding: 0.625rem 1.5rem;
-  background: rgba(255, 255, 255, 0.15);
+  background: ${(p) => (p.$active ? '#e50914' : 'rgba(255,255,255,0.15)')};
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid ${(p) => (p.$active ? '#e50914' : 'rgba(255,255,255,0.3)')};
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: ${(p) => (p.$active ? '#c40812' : 'rgba(255,255,255,0.25)')};
   }
 `

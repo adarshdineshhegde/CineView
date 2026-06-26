@@ -47,3 +47,19 @@ export const MetaRow = styled.div`
     color: #b3b3b3;
   }
 `
+
+export const WatchlistButton = styled.button<{ $active?: boolean }>`
+  padding: 0.625rem 1.5rem;
+  background: ${(p) => (p.$active ? '#e50914' : 'rgba(255,255,255,0.15)')};
+  color: #ffffff;
+  border: 1px solid ${(p) => (p.$active ? '#e50914' : 'rgba(255,255,255,0.3)')};
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: ${(p) => (p.$active ? '#c40812' : 'rgba(255,255,255,0.25)')};
+  }
+`

@@ -7,7 +7,10 @@ import enMovies from './locales/en/movies.json'
 import enTvshows from './locales/en/tvshows.json'
 import enSearch from './locales/en/search.json'
 import enPreferences from './locales/en/preferences.json'
+import enCollection from './locales/en/collection.json'
 
+
+import esCollection from './locales/es/collection.json'
 import esCommon from './locales/es/common.json'
 import esAuth from './locales/es/auth.json'
 import esMovies from './locales/es/movies.json'
@@ -22,6 +25,7 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       common: enCommon,
+      collection: enCollection,
       auth: enAuth,
       movies: enMovies,
       tvshows: enTvshows,
@@ -30,6 +34,7 @@ i18n.use(initReactI18next).init({
     },
     es: {
       common: esCommon,
+      collection: esCollection,
       auth: esAuth,
       movies: esMovies,
       tvshows: esTvshows,

@@ -1,3 +1,5 @@
 export { WatchlistPage } from './ui/pages/WatchlistPage'
 export { MyListsPage } from './ui/pages/MyListsPage'
 export { ListDetailPage } from './ui/pages/ListDetailPage'
+export { WatchlistStore } from './data/stores/WatchlistStore'
+export type { WatchlistEntry, MediaSnapshot, WatchlistStatus } from './core/types/Collection.types'
