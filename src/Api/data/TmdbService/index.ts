@@ -1,0 +1,1 @@
+export { TmdbService } from './index.api'

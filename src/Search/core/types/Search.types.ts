@@ -1,20 +1,5 @@
-export type SearchResultType = 'movie' | 'tv' | 'person'
+import { z } from 'zod'
 
-export interface SearchResultItem {
-  id: number
-  mediaType: SearchResultType
-  title: string
-  posterPath: string | null
-  overview: string
-  releaseDate?: string
-  firstAirDate?: string
-}
+export const recentSearchesSchema = z.array(z.string())
 
-export interface SearchResponse {
-  page: number
-  results: SearchResultItem[]
-  totalPages: number
-  totalResults: number
-}
-
-export type SearchStatus = 'idle' | 'loading' | 'success' | 'error'
+export type RecentSearches = z.infer<typeof recentSearchesSchema>
